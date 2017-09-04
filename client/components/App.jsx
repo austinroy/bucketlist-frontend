@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-export default class App extends React.Component {
-  render() {
+class App extends React.Component {
+  render(){
     return (
-     <div style={{textAlign: 'center'}}>
-        <h1>Xperience Bucketlist</h1>
-      </div>);
+      <div>
+        {this.props.children}
+      </div>
+    );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.object.isRequired
+};
+
+export default App;
