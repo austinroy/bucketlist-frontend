@@ -4,11 +4,13 @@ import App from "././components/App.jsx";
 import LandingPage from "././components/Landing/LandingPage.jsx";
 import LoginForm from "././components/Auth/LogIn.jsx";
 import RegForm from "././components/Auth/Register.jsx";
+import BucketlistsPage from "././components/BucketlistView/BucketPage.jsx";
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingPage} />
     <Route path="/register" component={RegForm} />
     <Route path="/login" component={LoginForm} />
+    <Route path="/bucketlists" component={BucketlistsPage} />
   </Route>
 );

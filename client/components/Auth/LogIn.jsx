@@ -1,15 +1,13 @@
 import React from 'react';
-import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Checkbox } from 'react-bootstrap';
+import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Checkbox, PageHeader } from 'react-bootstrap';
 
 class LoginForm extends React.Component {
   render() {
     return (
       <div className="container justify-content-center">
+        <PageHeader bsStyle="primary">Log In</PageHeader>
         <Col className="col-md-8 justify-content-md-center">
           <Form horizontal>
-            <FormGroup>
-              <h1>Log In</h1>
-            </FormGroup>
 
             <FormGroup controlId="formHorizontalEmail">
               <Col componentClass={ControlLabel} sm={2}>
