@@ -1,14 +1,15 @@
 import React, {state} from 'react';
-import { Panel, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
-import ItemsList from './ItemsList.jsx';
+import { ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl, ButtonGroup } from 'react-bootstrap';
 
-class BucketPanel extends React.Component {
+class ItemsList extends React.Component {
   constructor(props){
     super(props);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.renderItemsList = this.renderItemsList.bind(this);
     this.state = {
-      showModal: false
+      showModal: false,
+      items : ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
     }
   };
 
@@ -20,23 +21,25 @@ class BucketPanel extends React.Component {
     this.setState({ showModal: true });
   };
 
-  render() {
+
+
+  renderItemsList(title, i) {
     return (
-      <Panel header="My Bucketlist" bsStyle="primary">
-        <ItemsList />
-        <ButtonToolbar>
-          <Button bsStyle="info" bsSize="small" onClick={this.open}>Edit Bucketlist</Button>
-          <Button bsStyle="danger" bsSize="small">Delete Bucketlist</Button>
-        </ButtonToolbar>
+      <ListGroupItem key={i}>{title}
+        <ButtonGroup className="pull-right">
+          <Button bsSize="xsmall" bsStyle="info" onClick={this.open}>Edit</Button>
+          <Button bsSize="xsmall" bsStyle="success">Done</Button>
+          <Button bsSize="xsmall" bsStyle="danger">Delete</Button>
+        </ButtonGroup>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Bucket List</Modal.Title>
+            <Modal.Title>Edit Bucket List Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form horizontal>
               <FormGroup controlId="formHorizontalText">
                 <Col componentClass={ControlLabel} sm={2}>
-                  Bucketlist Name
+                  Item Name
                 </Col>
                 <Col sm={10}>
                   <FormControl type="text" placeholder="bucketlist name" />
@@ -50,9 +53,15 @@ class BucketPanel extends React.Component {
             <Button bsStyle="danger" onClick={this.close}>cancel</Button>
           </Modal.Footer>
           </Modal>
-      </Panel>
+      </ListGroupItem>
+    );
+  };
+
+  render() {
+    return (
+      <ListGroup>{this.state.items.map(this.renderItemsList)}</ListGroup>
     )
   }
 };
 
-export default BucketPanel;
+export default ItemsList;
