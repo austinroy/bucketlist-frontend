@@ -15,8 +15,8 @@ class LandingPage extends React.Component {
               id="input-dropdown-addon"
               title="Get Started"
               bsStyle="primary">
-              <MenuItem key="1">Login</MenuItem>
-              <MenuItem key="2">Sign Up</MenuItem>
+              <MenuItem key="1" href="/login">Login</MenuItem>
+              <MenuItem key="2" href="/register">Sign Up</MenuItem>
             </DropdownButton>
           </p>
         </Jumbotron>
