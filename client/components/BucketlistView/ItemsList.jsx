@@ -6,9 +6,12 @@ class ItemsList extends React.Component {
     super(props);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.closeNewModal = this.closeNewModal.bind(this);
+    this.openNewModal = this.openNewModal.bind(this);
     this.renderItemsList = this.renderItemsList.bind(this);
     this.state = {
       showModal: false,
+      showItemModal: false,
       items : ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger']
     }
   };
@@ -21,6 +24,13 @@ class ItemsList extends React.Component {
     this.setState({ showModal: true });
   };
 
+  closeNewModal() {
+    this.setState({ showItemModal: false });
+  };
+
+  openNewModal() {
+    this.setState({ showItemModal: true });
+  };
 
 
   renderItemsList(title, i) {
@@ -59,7 +69,32 @@ class ItemsList extends React.Component {
 
   render() {
     return (
-      <ListGroup>{this.state.items.map(this.renderItemsList)}</ListGroup>
+      <ListGroup>
+        {this.state.items.map(this.renderItemsList)}
+        <ListGroupItem onClick={this.openNewModal}>New Bucket List Item</ListGroupItem>
+          <Modal show={this.state.showItemModal} onHide={this.closeNewModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add New Bucket List Item</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form horizontal>
+                <FormGroup controlId="formHorizontalText">
+                  <Col componentClass={ControlLabel} sm={2}>
+                    Item Name
+                  </Col>
+                  <Col sm={10}>
+                    <FormControl type="text" placeholder="bucketlist name" />
+                  </Col>
+                </FormGroup>
+
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button type="submit" bsStyle="info" onClick={this.closeNewModal}>Save Changes</Button>
+              <Button bsStyle="danger" onClick={this.closeNewModal}>cancel</Button>
+            </Modal.Footer>
+          </Modal>
+      </ListGroup>
     )
   }
 };
