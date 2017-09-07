@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { PageHeader, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
 import BucketPanel from "./BucketPanel.jsx";
 
-class BucketlistsPage extends React.Component {
+class BucketlistsPage extends Component {
   constructor(props){
     super(props);
     this.close = this.close.bind(this);
@@ -12,11 +12,11 @@ class BucketlistsPage extends React.Component {
     }
   };
 
-  close() {
+  close () {
     this.setState({ showModal: false });
   };
 
-  open() {
+  open () {
     this.setState({ showModal: true });
   };
 
