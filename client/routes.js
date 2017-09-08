@@ -5,6 +5,7 @@ import LandingPage from "././components/Landing/LandingPage.jsx";
 import LoginForm from "././components/Auth/LogIn.jsx";
 import RegForm from "././components/Auth/Register.jsx";
 import BucketlistsPage from "././components/BucketlistView/BucketPage.jsx";
+import NotFound from "././components/NotFound.jsx";
 
 
 // function loggedIn() {
@@ -39,5 +40,6 @@ export default (
     <Route path="/login" component={LoginForm} />
     <Route path="/bucketlists" component={BucketlistsPage} />
     {/*<Route path="/bucketlists" component={BucketlistsPage} onEnter={requireAuth}/>*/}
+    <Route path="*" component={NotFound} />
   </Route>
 );
