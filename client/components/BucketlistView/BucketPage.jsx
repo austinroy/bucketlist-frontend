@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { PageHeader, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl } from 'react-bootstrap';
 import BucketPanel from "./BucketPanel.jsx";
+import { connect } from 'react-redux';
+import * as actions from '../../redux/bucket/actions.js'
 
 class BucketlistsPage extends Component {
   constructor(props){
@@ -53,4 +55,16 @@ class BucketlistsPage extends Component {
   }
 };
 
-export default BucketlistsPage;
+function mapStateToProps(state, ownProps) {
+  return{
+    bucketlists: state.bucketlists
+  };
+};
+
+function mapDispatchToProps(){
+  return{
+    createBucketList: bucketlist => dispatch(actions.createBucketList(bucketlist))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BucketlistsPage);

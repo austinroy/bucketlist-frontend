@@ -1,3 +1,3 @@
-export const loginRequest = () => ({
-  type: 'LOGIN_REQUEST'
-});
+export const createBucketlist = () => ({
+  type: 'CREATE_BUCKETLIST'
+})

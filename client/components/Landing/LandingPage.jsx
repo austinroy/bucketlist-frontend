@@ -9,7 +9,6 @@ class LandingPage extends React.Component {
         <Jumbotron>
           <h1>Xperience Bucketlist</h1>
           <p>Welcome to my bucketlist application, sign up or login to get started</p>
-          <p>
             <DropdownButton
               componentClass={InputGroup.Button}
               id="input-dropdown-addon"
@@ -18,7 +17,6 @@ class LandingPage extends React.Component {
               <MenuItem key="1" href="/login">Login</MenuItem>
               <MenuItem key="2" href="/register">Sign Up</MenuItem>
             </DropdownButton>
-          </p>
         </Jumbotron>
       </div>
     )

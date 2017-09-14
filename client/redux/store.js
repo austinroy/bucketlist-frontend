@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import ReduxThunk from 'redux-thunk';
 
-import reducer from './bucket/index.js';
+import reducer from './index.js';
 
 const middleware = [ReduxThunk];
 const devtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
