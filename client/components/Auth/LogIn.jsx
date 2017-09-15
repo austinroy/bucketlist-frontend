@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Checkbox, PageHeader } from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 class LoginForm extends React.Component {
   render() {
@@ -47,4 +48,16 @@ class LoginForm extends React.Component {
   }
 };
 
-export default LoginForm;
+function mapStateToProps(state, ownProps) {
+  return{
+    users: state.users
+  };
+};
+
+function mapDispatchToProps(){
+  return{
+    loginUser: user => dispatch(actions.loginUser(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

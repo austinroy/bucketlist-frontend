@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button, PageHeader } from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 class RegForm extends React.Component {
   render() {
@@ -42,4 +43,16 @@ class RegForm extends React.Component {
   }
 };
 
-export default RegForm;
+function mapStateToProps(state, ownProps) {
+  return{
+    users: state.users
+  };
+};
+
+function mapDispatchToProps(){
+  return{
+    registerUser: user => dispatch(actions.registerUser(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegForm);
