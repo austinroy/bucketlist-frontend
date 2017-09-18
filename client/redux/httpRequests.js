@@ -1,38 +1,44 @@
 import axios from 'axios';
 
-function registerUser(){
-    axios.post('/auth/register/');
+const baseUrl = '127.0.0.1:5000'
+
+function registerUser(data){
+    axios.post('${baseUrl}/auth/register/', data);
 }
 
-function loginUser(){
-    axios.post('/auth/register/');
+function loginUser(data){
+    axios.post('${baseUrl}/auth/register/', data);
 }
-function getBucketlists(){
-    axios.get('/bucketlists/');
-}
-
-function addBucketlist(){
-    axios.post('/bucketlists/');
+function getBucketlists(data){
+    axios.get('${baseUrl}/bucketlists/', credentials);
 }
 
-function getSingleBucketlist(id){
-    axios.get('/bucketlists/${id}');
+function addBucketlist(data, credentials){
+    axios.post('${baseUrl}/bucketlists/', data ,credentials );
 }
 
-function searchBucketlists(bucketname){
-    axios.get('/bucketlists/?=${bucketname}');
+function getSingleBucketlist(bucket_id, credentials){
+    axios.get('${baseUrl}/bucketlists/${bucket_id}');
 }
 
-function updateBucketlist(id){
-    axios.put('/bucketlists/');
+function searchBucketlists(bucketname, credentials){
+    axios.get('${baseUrl}/bucketlists/?=${bucketname}', credentials);
 }
 
-function createBucketlistItems(bucket_id){
-    axios.post('/bucketlists/${bucket_id}/');
+function updateBucketlist(bucket_id, data , credentials){
+    axios.put('${baseUrl}/bucketlists/${bucket_id}',data, credentials);
 }
 
-function updateBucketlistItems(bucket_id){
-    axios.put('/bucketlists/${bucket_id}/');
+function createBucketlistItems(bucket_id, data, credentials){
+    axios.post('${baseUrl}/bucketlists/${bucket_id}/', data , credentials);
+}
+
+function updateBucketlistItems(bucket_id, item_id, data,credentials){
+    axios.put('${baseUrl}/bucketlists/${bucket_id}/{item_id}', data, credentials);
+}
+
+function deleteBucketlistItems(bucket_id, item_id, credentials){
+    axios.delete('${baseUrl}/bucketlists/${bucket_id}/{item_id}', credentials);
 }
 
 
