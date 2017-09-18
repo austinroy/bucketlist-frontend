@@ -12,12 +12,13 @@ export const deleteBucketlist = () => ({
 })
 
 export const createBucketlistItem = () => ({
-  type: 'CREATE_BUCKETLIST_ITEM'
+  type: 'CREATE_BUCKETLIST_ITEM',
+  bucketlist_item
 })
 
 export const updateBucketlistItem = () => ({
   type: 'UPDATE_BUCKETLIST_ITEM',
-  bucketlist
+  bucketlist_item
 })
 
 export const deleteBucketlistItem = () => ({
