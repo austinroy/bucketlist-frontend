@@ -40,4 +40,4 @@ export default {
       created_by: "1113456"
     },
   ],
-}
+};
