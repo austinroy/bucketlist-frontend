@@ -1,9 +1,9 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import ReduxThunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 import reducer from './index.js';
 
-const middleware = [ReduxThunk];
+const middleware = [thunk];
 const devtools = window.devToolsExtension ? window.devToolsExtension() : f => f;
 const enhancer = compose(
   applyMiddleware(...middleware),

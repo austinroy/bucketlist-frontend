@@ -1,8 +1,17 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button, Checkbox, PageHeader } from 'react-bootstrap';
 import {connect} from 'react-redux';
+import * as actions from '../../redux/auth/actions.js'
 
 class LoginForm extends React.Component {
+  componentWillMount(dispatch){
+    const data = {
+      username: 'austin',
+      password: 'pass'
+    }
+    this.props.loginUser(data);
+  }
+
   render() {
     return (
       <div className="container justify-content-center">
@@ -54,7 +63,7 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-function mapDispatchToProps(){
+function mapDispatchToProps(dispatch){
   return{
     loginUser: user => dispatch(actions.loginUser(user))
   };

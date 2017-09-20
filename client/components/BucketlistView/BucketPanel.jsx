@@ -32,7 +32,7 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-function mapDispatchToProps(){
+function mapDispatchToProps(dispatch){
   return{
     createBucketList: bucketlist => dispatch(actions.createBucketList(bucketlist))
   };

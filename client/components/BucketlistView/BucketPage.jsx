@@ -22,6 +22,10 @@ class BucketlistsPage extends Component {
     this.setState({ showModal: true });
   };
 
+  componentWillMount (dispatch){
+    this.props.fetchBucketlists()
+  }
+
   render() {
     return (
       <div className="container justify-content-center">
@@ -61,8 +65,9 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-function mapDispatchToProps(){
+function mapDispatchToProps(dispatch){
   return{
+    fetchBucketlists: () => dispatch(actions.fetchBucketlists),
     createBucketList: bucketlist => dispatch(actions.createBucketList(bucketlist))
   };
 };
