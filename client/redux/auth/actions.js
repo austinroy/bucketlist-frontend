@@ -14,16 +14,23 @@ export const loginUser = (data) => {
   return () => {
     console.log(data);
     return axios.post('http://localhost:5000/auth/login/', data)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      dispatch(loginSuccess);
+    })
     .catch(error =>
     console.log(error))
   }
 }
 
-export const createUser = (data) => {
+export const registerUser = (data) => {
   return () => {
-    axios.post('http://localhost:5000/auth/register/', data)
-    .then(res => console.log(res))
+    console.log(data);
+    return axios.post('http://localhost:5000/auth/register/', data)
+    .then(res => {
+      console.log(res);
+      dispatch(createUserSuccess);
+    })
     .catch(error =>
     console.log(error))
   }

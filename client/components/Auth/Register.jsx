@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, FormGroup, Col, ControlLabel, FormControl, Button, PageHeader } from 'react-bootstrap';
 import {connect} from 'react-redux';
+import * as actions from '../../redux/auth/actions.js' 
+
 
 class RegForm extends React.Component {
 
@@ -8,6 +10,7 @@ class RegForm extends React.Component {
     super(props, context);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.regSubmit = this.regSubmit.bind(this);
     this.state = {
       userdata : {
         username: '',
@@ -35,6 +38,7 @@ class RegForm extends React.Component {
     }
     this.props.registerUser(data);
   }
+
 
   render() {
     return (
@@ -82,9 +86,9 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-function mapDispatchToProps(){
+function mapDispatchToProps(dispatch){
   return{
-    registerUser: user => dispatch(actions.registerUser(user))
+    registerUser: userdata => dispatch(actions.registerUser(userdata))
   };
 };
 

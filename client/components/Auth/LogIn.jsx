@@ -8,6 +8,7 @@ class LoginForm extends React.Component {
     super(props, context);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.loginSubmit =  this.loginSubmit.bind(this);
     this.state = {
       userdata : {
         username: '',
