@@ -35,51 +35,51 @@ export const fetchBucketlistsSuccess = () => ({
 });
 
 export const fetchBucketlists = (dispatch, credentials) => {
-  axios.get('https://localhost:5000/bucketlists/', credentials).then(res =>
+  axios.get('http://localhost:5000/bucketlists/', credentials).then(res =>
   console.log(res.data));
 };
 
 export const fetchSingleBucketlists = (dispatch, credentials, bucket_id) => {
-  const url = 'https://localhost:5000/bucketlists/'+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
   axios.get(url, credentials).then(res =>
   console.log(res.data));
 };
 
 export const updateBucketlist = (dispatch, credentials, bucket_id, data) => {
-  const url = 'https://localhost:5000/bucketlists/'+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
   axios.put(url,data ,credentials).then(res =>
   console.log(res.data));
 };
 
 export const newBucketlist = (dispatch, credentials) => {
-  axios.post('https://localhost:5000/bucketlists/', credentials)
+  axios.post('http://localhost:5000/bucketlists/', credentials)
 };
 
 export const deleteBucketlist = (dispatch, credentials, bucket_id) => {
-  const url = 'https://localhost:5000/bucketlists/'+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
   axios.delete(url, credentials).then(res =>
   console.log(res.data));
 };
 
 export const searchBucketlist = (dispatch, credentials, bucket_name) => {
-  const url = 'https://localhost:5000/bucketlists/q='+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/q='+ bucket_id;
   axios.get(url, credentials).then(res =>
   console.log(res.data));
 };
 
 export const newBucketlistItem = (dispatch, credentials, bucket_id, data) => {
-  const url = 'https://localhost:5000/bucketlists/'+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
   axios.post(url, data, credentials)
 };
 
 export const updateBucketlistItem = (dispatch, credentials, bucket_id, item_id, data) => {
-  const url = "https://localhost:5000/bucketlists/${bucket_id}/${item_id}";
+  const url = "http://localhost:5000/bucketlists/${bucket_id}/${item_id}";
   axios.put(url,data ,credentials).then(res =>
   console.log(res.data));
 };
 
 export const deleteBucketlistItem = (dispatch, credentials, bucket_id) => {
-  const url = 'https://localhost:5000/bucketlists/'+ bucket_id;
+  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
   axios.delete(url, credentials).then(res =>
   console.log(res.data));
 };

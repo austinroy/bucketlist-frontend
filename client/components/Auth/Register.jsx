@@ -3,6 +3,39 @@ import { Form, FormGroup, Col, ControlLabel, FormControl, Button, PageHeader } f
 import {connect} from 'react-redux';
 
 class RegForm extends React.Component {
+
+  constructor(props, context){
+    super(props, context);
+    this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onUsernameChange = this.onUsernameChange.bind(this);
+    this.state = {
+      userdata : {
+        username: '',
+        password: ''
+      }
+    }
+  }
+
+  onUsernameChange(event){
+    const userdata = this.state.userdata;
+    userdata.username = event.target.value;
+    this.setState({userdata: userdata});
+  }
+
+  onPasswordChange(event){
+    const userdata = this.state.userdata;
+    userdata.password = event.target.value;
+    this.setState({userdata: userdata});
+  }
+
+  regSubmit(dispatch){
+    const data = {
+      username: this.state.userdata.username,
+      password: this.state.userdata.password
+    }
+    this.props.registerUser(data);
+  }
+
   render() {
     return (
       <div className="container justify-content-center">
@@ -12,10 +45,10 @@ class RegForm extends React.Component {
 
             <FormGroup controlId="formHorizontalEmail">
               <Col componentClass={ControlLabel} sm={2}>
-                Email
+                Username
               </Col>
               <Col sm={10}>
-                <FormControl type="email" placeholder="Email" />
+                <FormControl type="text" placeholder="Username" onChange={this.onUsernameChange} />
               </Col>
             </FormGroup>
 
@@ -24,14 +57,14 @@ class RegForm extends React.Component {
                 Password
               </Col>
               <Col sm={10}>
-                <FormControl type="password" placeholder="Password" />
+                <FormControl type="password" placeholder="Password" onChange={this.onPasswordChange}/>
               </Col>
             </FormGroup>
 
 
             <FormGroup>
               <Col smOffset={2} sm={10}>
-                <Button type="submit">
+                <Button type="submit" onClick={this.regSubmit}>
                   Sign up
                 </Button>
               </Col>

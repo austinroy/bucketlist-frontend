@@ -10,12 +10,21 @@ export const loginSuccess = () => ({
   user
 });
 
-export const loginUser = (dispatch, data) => {
-  axios.post('http://localhost:5000/auth/login/', data).then(res =>
-    (console.log(res.data))
-  )
+export const loginUser = (data) => {
+  return () => {
+    console.log(data);
+    return axios.post('http://localhost:5000/auth/login/', data)
+    .then(res => console.log(res))
+    .catch(error =>
+    console.log(error))
+  }
 }
 
-export const createUser = (dispatch, data) => {
-  axios.post('http://localhost:5000/auth/register/', data);
+export const createUser = (data) => {
+  return () => {
+    axios.post('http://localhost:5000/auth/register/', data)
+    .then(res => console.log(res))
+    .catch(error =>
+    console.log(error))
+  }
 }
