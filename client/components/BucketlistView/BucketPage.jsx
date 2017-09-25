@@ -9,8 +9,13 @@ class BucketlistsPage extends Component {
     super(props);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
+    this.handleNewBucketSubmit = this.handleNewBucketSubmit.bind(this);
     this.state = {
-      showModal: false
+      showModal: false,
+      bucketdata: {
+        name: ''
+      }
     }
   };
 
@@ -24,6 +29,20 @@ class BucketlistsPage extends Component {
 
   componentWillMount (dispatch){
     this.props.fetchBucketlists()
+  }
+
+  onNameChange (event) {
+    const bucketdata = this.state.bucketdata;
+    bucketdata.name = event.target.value;
+    this.setState({bucketdata: bucketdata});
+  }
+
+  handleNewBucketSubmit (dispatch){
+    const bucketdata = {
+      name: this.state.bucketdata.name
+    };
+    this.props.createBucketlist(bucketdata);
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -43,14 +62,14 @@ class BucketlistsPage extends Component {
                     Bucketlist Name
                   </Col>
                   <Col sm={10}>
-                    <FormControl type="text" placeholder="bucketlist name" />
+                    <FormControl type="text" placeholder="bucketlist name" onChange={this.onNameChange}/>
                   </Col>
                 </FormGroup>
 
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button type="submit" bsStyle="info" onClick={this.close}>Save Changes</Button>
+              <Button type="submit" bsStyle="info" onClick={this.handleNewBucketSubmit}>Save Bucket List</Button>
               <Button bsStyle="danger" onClick={this.close}>cancel</Button>
             </Modal.Footer>
           </Modal>
@@ -68,7 +87,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch){
   return{
     fetchBucketlists: () => dispatch(actions.fetchBucketlists),
-    createBucketList: bucketlist => dispatch(actions.createBucketList(bucketlist))
+    createBucketlist: bucketdata => dispatch(actions.createBucketlist(bucketdata))
   };
 };
 

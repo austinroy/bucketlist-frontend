@@ -51,8 +51,10 @@ export const updateBucketlist = (dispatch, credentials, bucket_id, data) => {
   console.log(res.data));
 };
 
-export const newBucketlist = (dispatch, credentials) => {
-  axios.post('http://localhost:5000/bucketlists/', credentials)
+export const createBucketlist = (data) => {
+  return () => {
+    return axios.post('http://localhost:5000/bucketlists/', data)
+  }
 };
 
 export const deleteBucketlist = (dispatch, credentials, bucket_id) => {
