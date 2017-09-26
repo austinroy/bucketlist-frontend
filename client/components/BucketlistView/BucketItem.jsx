@@ -12,6 +12,7 @@ export class BucketItem extends React.Component {
     this.submitChanges = this.submitChanges.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.setDone = this.setDone.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
     this.state = {
       showModal: false,
       showItemModal: false,
@@ -60,6 +61,15 @@ export class BucketItem extends React.Component {
     this.props.updateBucketlistItem(itemdata);
   }
 
+  deleteItem (dispatch) {
+    const item = this.props.item;
+    const {id, bucketlist_id} = item;
+    const itemdata = {
+      id,
+      bucketlist_id,
+    };
+    this.props.deleteBucketlistItem(itemdata);
+  }
   
 
   render(){
@@ -69,7 +79,7 @@ export class BucketItem extends React.Component {
         <ButtonGroup className="pull-right">
           <Button bsSize="xsmall" bsStyle="info" onClick={this.open}>Edit</Button>
           <Button bsSize="xsmall" bsStyle="success" onClick={this.setDone}>Done</Button>
-          <Button bsSize="xsmall" bsStyle="danger">Delete</Button>
+          <Button bsSize="xsmall" bsStyle="danger" onClick={this.deleteItem}>Delete</Button>
         </ButtonGroup>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
@@ -100,7 +110,8 @@ export class BucketItem extends React.Component {
 
 function mapDispatchToProps(dispatch){
   return{
-    updateBucketlistItem: itemdata => dispatch(actions.updateBucketlistItem(itemdata))
+    updateBucketlistItem: itemdata => dispatch(actions.updateBucketlistItem(itemdata)),
+    deleteBucketlistItem: itemdata => dispatch(actions.deleteBucketlistItem(itemdata))
   };
 };
 

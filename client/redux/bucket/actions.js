@@ -83,8 +83,8 @@ export const updateBucketlistItem = (data) => {
   console.log(res.data));
 };
 
-export const deleteBucketlistItem = (dispatch, credentials, bucket_id) => {
-  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
-  axios.delete(url, credentials).then(res =>
+export const deleteBucketlistItem = (data) => {
+  const url = 'http://localhost:5000/bucketlists/'+ data.bucketlist_id + "/items/" + data.id;
+  axios.delete(url).then(res =>
   console.log(res.data));
 };
