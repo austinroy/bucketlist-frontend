@@ -49,7 +49,6 @@ export const fetchSingleBucketlists = (dispatch, credentials, bucket_id) => {
 };
 
 export const updateBucketlist = (data) => {
-  console.log("this is data: ", data);
   const url = 'http://localhost:5000/bucketlists/'+ data.id;
   axios.put(url,data).then(res =>
   console.log(res.data));
@@ -73,9 +72,9 @@ export const searchBucketlist = (dispatch, credentials, bucket_name) => {
   console.log(res.data));
 };
 
-export const newBucketlistItem = (dispatch, credentials, bucket_id, data) => {
-  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
-  axios.post(url, data, credentials)
+export const newBucketlistItem = (data) => {
+  const url = 'http://localhost:5000/bucketlists/'+ data.bucketlist_id +"/items/";
+  axios.post(url, data);
 };
 
 export const updateBucketlistItem = (dispatch, credentials, bucket_id, item_id, data) => {

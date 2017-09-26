@@ -33,10 +33,4 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-function mapDispatchToProps(dispatch){
-  return{
-    createBucketList: bucketlist => dispatch(actions.createBucketList(bucketlist))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BucketPanel);
+export default connect(mapStateToProps)(BucketPanel);

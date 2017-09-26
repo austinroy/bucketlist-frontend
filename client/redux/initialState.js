@@ -9,14 +9,16 @@ export default {
           name: "I need to do X",
           date_created: "2015-08-12 11:57:23",
           date_modified: "2015-08-12 11:57:23",
-          done: false
+          done: false,
+          bucketlist_id: 1
         },
         {
           id: 2,
           name: "I need to do Y",
           date_created: "2015-08-12 11:57:23",
           date_modified: "2015-08-12 11:57:23",
-          done: false
+          done: false,
+          bucketlist_id: 1
         }
       ],
       date_created: "2015-08-12 11:57:23",
@@ -32,7 +34,8 @@ export default {
           name: "I need to do X",
           date_created: "2015-08-12 11:57:23",
           date_modified: "2015-08-12 11:57:23",
-          done: false
+          done: false,
+          bucketlist_id: 2
         }
       ],
       date_created: "2015-08-12 11:57:23",

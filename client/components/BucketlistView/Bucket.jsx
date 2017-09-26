@@ -38,7 +38,6 @@ export class Bucket extends Component {
       id,
       name: this.state.bucketdata.name
     };
-    console.log("this is id: ", bucketdata.id);
     this.props.updateBucketlist(bucketdata);
     this.setState({ showModal: false });
   }
