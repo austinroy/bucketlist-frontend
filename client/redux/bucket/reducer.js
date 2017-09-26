@@ -5,7 +5,7 @@ export default function bucketlistReducer(state = initialState.bucketlists, acti
     case 'CREATE_BUCKETLIST':
       return [...state, Object.assign({}, action.bucketlist)];
     case 'FETCH_BUCKETLISTS_SUCCESS':
-      return [...state, Object.assign({}, action.bucketlist)];
+      return [...state, Object.assign([], action.bucketlists)];
     default:
       return state;
   }

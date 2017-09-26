@@ -29,14 +29,17 @@ export const deleteBucketlistItemSucess = () => ({
   type: 'DELETE_BUCKETLIST_ITEM_SUCESS'
 });
 
-export const fetchBucketlistsSuccess = () => ({
+export const fetchBucketlistsSuccess = (bucketlists) => ({
   type: 'FETCH_BUCKETLISTS_SUCCESS',
   bucketlists
 });
 
-export const fetchBucketlists = (dispatch, credentials) => {
-  axios.get('http://localhost:5000/bucketlists/', credentials).then(res =>
-  console.log(res.data));
+export const fetchBucketlists = (dispatch) => {
+  axios.get('http://localhost:5000/bucketlists/').then(res => {
+    console.log("fetched buckets: ",res.data.Bucketlist);
+    const bucketlists = res.data.Bucketlist;
+    dispatch(fetchBucketlistsSuccess(bucketlists));
+  })
 };
 
 export const fetchSingleBucketlists = (dispatch, credentials, bucket_id) => {
@@ -45,9 +48,10 @@ export const fetchSingleBucketlists = (dispatch, credentials, bucket_id) => {
   console.log(res.data));
 };
 
-export const updateBucketlist = (dispatch, credentials, bucket_id, data) => {
-  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
-  axios.put(url,data ,credentials).then(res =>
+export const updateBucketlist = (data) => {
+  console.log("this is data: ", data);
+  const url = 'http://localhost:5000/bucketlists/'+ data.id;
+  axios.put(url,data).then(res =>
   console.log(res.data));
 };
 
