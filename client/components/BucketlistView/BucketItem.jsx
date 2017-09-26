@@ -11,6 +11,7 @@ export class BucketItem extends React.Component {
     this.open = this.open.bind(this);
     this.submitChanges = this.submitChanges.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
+    this.setDone = this.setDone.bind(this);
     this.state = {
       showModal: false,
       showItemModal: false,
@@ -48,13 +49,26 @@ export class BucketItem extends React.Component {
     this.setState({ showModal: false });
   }
 
+  setDone (dispatch) {
+    const item = this.props.item;
+    const {id, bucketlist_id} = item;
+    const itemdata = {
+      id,
+      bucketlist_id,
+      done: "true"
+    };
+    this.props.updateBucketlistItem(itemdata);
+  }
+
+  
+
   render(){
     const item = this.props.item;
     return(
       <ListGroupItem>{item.name}
         <ButtonGroup className="pull-right">
           <Button bsSize="xsmall" bsStyle="info" onClick={this.open}>Edit</Button>
-          <Button bsSize="xsmall" bsStyle="success">Done</Button>
+          <Button bsSize="xsmall" bsStyle="success" onClick={this.setDone}>Done</Button>
           <Button bsSize="xsmall" bsStyle="danger">Delete</Button>
         </ButtonGroup>
         <Modal show={this.state.showModal} onHide={this.close}>

@@ -75,7 +75,7 @@ class ItemsList extends React.Component {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button type="submit" bsStyle="info" onClick={this.handleNewBucketSubmit}>Save Changes</Button>
+              <Button type="submit" bsStyle="info" onClick={this.handleNewBucketSubmit}>Save Item</Button>
               <Button bsStyle="danger" onClick={this.closeNewModal}>cancel</Button>
             </Modal.Footer>
           </Modal>
