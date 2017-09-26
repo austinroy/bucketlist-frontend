@@ -37,8 +37,7 @@ class ItemsList extends React.Component {
   }
 
   handleNewBucketSubmit (dispatch){
-    const [item] = this.props.items;
-    const bucketlist_id = item.bucketlist_id;
+    const bucketlist_id = this.props.bucketlist_id;
     const itemdata = {
       name: this.state.itemdata.name,
       bucketlist_id

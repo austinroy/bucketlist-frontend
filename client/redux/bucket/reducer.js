@@ -1,11 +1,11 @@
 import initialState from '../initialState.js';
 
-export default function bucketlistReducer(state = initialState.bucketlists, action){
+export default function bucketlistReducer(state = [], action){
   switch(action.type){
     case 'CREATE_BUCKETLIST':
-      return [...state, Object.assign({}, action.bucketlist)];
+      return action.bucketlist;
     case 'FETCH_BUCKETLISTS_SUCCESS':
-      return [...state, Object.assign([], action.bucketlists)];
+      return action.bucketlists;
     default:
       return state;
   }

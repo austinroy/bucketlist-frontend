@@ -14,7 +14,6 @@ class BucketPanel extends React.Component {
   };
 
   render() {
-    console.log("Bucketlists:  ", this.props.bucketlists);
     return (
       <div>
         {this.props.bucketlists.map((bucketlist, index) => {

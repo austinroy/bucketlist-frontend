@@ -43,13 +43,10 @@ export class Bucket extends Component {
   }
 
   render() {
-    console.log("", this.props)
     const {bucketlist: {name, items, id}} = this.props;
-    console.log('Props: ', this.props);
-    console.log('Panel vars: name: ', name, 'items: ',items);
     return (
       <Panel header={name} bsStyle="primary">
-        <ItemsList items={items} />
+        <ItemsList items={items} bucketlist_id={id}/>
         <ButtonToolbar>
           <Button bsStyle="info" bsSize="small" onClick={this.open}>Edit Bucketlist</Button>
           <Button bsStyle="danger" bsSize="small">Delete Bucketlist</Button>

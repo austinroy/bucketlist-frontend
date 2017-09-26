@@ -36,7 +36,6 @@ export const fetchBucketlistsSuccess = (bucketlists) => ({
 
 export const fetchBucketlists = (dispatch) => {
   axios.get('http://localhost:5000/bucketlists/').then(res => {
-    console.log("fetched buckets: ",res.data.Bucketlist);
     const bucketlists = res.data.Bucketlist;
     dispatch(fetchBucketlistsSuccess(bucketlists));
   })
@@ -73,6 +72,7 @@ export const searchBucketlist = (dispatch, credentials, bucket_name) => {
 };
 
 export const newBucketlistItem = (data) => {
+  console.log("creating new item");
   const url = 'http://localhost:5000/bucketlists/'+ data.bucketlist_id +"/items/";
   axios.post(url, data);
 };
