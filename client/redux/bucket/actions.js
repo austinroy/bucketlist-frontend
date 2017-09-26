@@ -77,9 +77,9 @@ export const newBucketlistItem = (data) => {
   axios.post(url, data);
 };
 
-export const updateBucketlistItem = (dispatch, credentials, bucket_id, item_id, data) => {
-  const url = "http://localhost:5000/bucketlists/${bucket_id}/${item_id}";
-  axios.put(url,data ,credentials).then(res =>
+export const updateBucketlistItem = (data) => {
+  const url = "http://localhost:5000/bucketlists/"+ data.bucketlist_id +"/items/" + data.id;
+  axios.put(url,data).then(res =>
   console.log(res.data));
 };
 

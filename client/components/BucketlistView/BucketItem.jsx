@@ -1,14 +1,22 @@
 import React, {state} from 'react';
-import { ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl, ButtonGroup } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, 
+  Form, FormGroup, Col, ControlLabel, FormControl, ButtonGroup } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import * as actions from '../../redux/bucket/actions.js'
 
-export default class BucketItem extends React.Component {
+export class BucketItem extends React.Component {
   constructor(props){
     super(props);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+    this.submitChanges = this.submitChanges.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
     this.state = {
       showModal: false,
       showItemModal: false,
+      itemdata: {
+        name: ''
+      }
     }
   };
 
@@ -20,6 +28,26 @@ export default class BucketItem extends React.Component {
   open() {
     this.setState({ showModal: true });
   };
+
+  onNameChange (event) {
+    const itemdata = this.state.itemdata;
+    itemdata.name = event.target.value;
+    this.setState({itemdata: itemdata});
+  }
+
+  submitChanges (dispatch) {
+    const item = this.props.item;
+    console.log(item);
+    const {id, bucketlist_id} = item;
+    const itemdata = {
+      id,
+      bucketlist_id,
+      name: this.state.itemdata.name
+    };
+    this.props.updateBucketlistItem(itemdata);
+    this.setState({ showModal: false });
+  }
+
   render(){
     const item = this.props.item;
     return(
@@ -40,14 +68,14 @@ export default class BucketItem extends React.Component {
                   Item Name
                 </Col>
                 <Col sm={10}>
-                  <FormControl type="text" placeholder="bucketlist name" />
+                  <FormControl type="text" placeholder="bucketlist name" onChange={this.onNameChange}/>
                 </Col>
               </FormGroup>
 
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit" bsStyle="info" onClick={this.close}>Save Changes</Button>
+            <Button type="submit" bsStyle="info" onClick={this.submitChanges}>Save Changes</Button>
             <Button bsStyle="danger" onClick={this.close}>cancel</Button>
           </Modal.Footer>
           </Modal>
@@ -55,3 +83,11 @@ export default class BucketItem extends React.Component {
     )
   }
 };
+
+function mapDispatchToProps(dispatch){
+  return{
+    updateBucketlistItem: itemdata => dispatch(actions.updateBucketlistItem(itemdata))
+  };
+};
+
+export default connect(mapDispatchToProps)(BucketItem);

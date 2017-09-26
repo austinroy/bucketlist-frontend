@@ -1,5 +1,6 @@
 import React, {state} from 'react';
-import { ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Form, FormGroup, Col, ControlLabel, FormControl, ButtonGroup } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, 
+  Form, FormGroup, Col, ControlLabel, FormControl, ButtonGroup } from 'react-bootstrap';
 import BucketItem from './BucketItem.jsx'
 import { connect } from 'react-redux';
 import * as actions from '../../redux/bucket/actions.js'
