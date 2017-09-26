@@ -43,6 +43,7 @@ class BucketlistsPage extends Component {
     };
     this.props.createBucketlist(bucketdata);
     this.setState({ showModal: false });
+    window.location.reload();
   }
 
   render() {

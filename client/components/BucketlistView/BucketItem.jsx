@@ -48,6 +48,7 @@ export class BucketItem extends React.Component {
     };
     this.props.updateBucketlistItem(itemdata);
     this.setState({ showModal: false });
+    window.location.reload();
   }
 
   setDone (dispatch) {
@@ -59,6 +60,7 @@ export class BucketItem extends React.Component {
       done: "true"
     };
     this.props.updateBucketlistItem(itemdata);
+    window.location.reload();
   }
 
   deleteItem (dispatch) {
@@ -69,6 +71,7 @@ export class BucketItem extends React.Component {
       bucketlist_id,
     };
     this.props.deleteBucketlistItem(itemdata);
+    window.location.reload();
   }
   
 

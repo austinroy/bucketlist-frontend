@@ -41,6 +41,7 @@ export class Bucket extends Component {
     };
     this.props.updateBucketlist(bucketdata);
     this.setState({ showModal: false });
+    window.location.reload();
   }
 
   deleteBucketlist (){
@@ -49,6 +50,7 @@ export class Bucket extends Component {
       id
     };
     this.props.deleteBucketlist(bucketdata);
+    window.location.reload();
   }
 
   render() {

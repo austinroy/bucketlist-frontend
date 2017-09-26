@@ -44,6 +44,7 @@ class ItemsList extends React.Component {
     };
     this.props.newBucketlistItem(itemdata);
     this.setState({ showNewModal: false });
+    window.location.reload();
   }
 
   render() {
