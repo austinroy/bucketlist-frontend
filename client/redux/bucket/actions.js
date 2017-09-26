@@ -41,16 +41,12 @@ export const fetchBucketlists = (dispatch) => {
   })
 };
 
-export const fetchSingleBucketlists = (dispatch, credentials, bucket_id) => {
-  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
-  axios.get(url, credentials).then(res =>
-  console.log(res.data));
-};
-
 export const updateBucketlist = (data) => {
-  const url = 'http://localhost:5000/bucketlists/'+ data.id;
-  axios.put(url,data).then(res =>
-  console.log(res.data));
+  return () => {
+    const url = 'http://localhost:5000/bucketlists/'+ data.id;
+    axios.put(url,data).then(res =>
+    console.log(res.data));
+  }
 };
 
 export const createBucketlist = (data) => {
@@ -59,10 +55,12 @@ export const createBucketlist = (data) => {
   }
 };
 
-export const deleteBucketlist = (dispatch, credentials, bucket_id) => {
-  const url = 'http://localhost:5000/bucketlists/'+ bucket_id;
-  axios.delete(url, credentials).then(res =>
-  console.log(res.data));
+export const deleteBucketlist = (data) => {
+  return () => {
+    const url = 'http://localhost:5000/bucketlists/'+ data.id;
+    axios.delete(url).then(res =>
+    console.log(res.data));
+  }
 };
 
 export const searchBucketlist = (dispatch, credentials, bucket_name) => {

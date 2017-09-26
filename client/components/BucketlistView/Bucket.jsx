@@ -17,6 +17,7 @@ export class Bucket extends Component {
     this.open = this.open.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.submitChanges = this.submitChanges.bind(this);
+    this.deleteBucketlist = this.deleteBucketlist.bind(this);
   };
 
   close () {
@@ -42,6 +43,14 @@ export class Bucket extends Component {
     this.setState({ showModal: false });
   }
 
+  deleteBucketlist (){
+    const {bucketlist: {id}} = this.props;
+    const bucketdata = {
+      id
+    };
+    this.props.deleteBucketlist(bucketdata);
+  }
+
   render() {
     const {bucketlist: {name, items, id}} = this.props;
     return (
@@ -49,7 +58,7 @@ export class Bucket extends Component {
         <ItemsList items={items} bucketlist_id={id}/>
         <ButtonToolbar>
           <Button bsStyle="info" bsSize="small" onClick={this.open}>Edit Bucketlist</Button>
-          <Button bsStyle="danger" bsSize="small">Delete Bucketlist</Button>
+          <Button bsStyle="danger" bsSize="small" onClick={this.deleteBucketlist}>Delete Bucketlist</Button>
         </ButtonToolbar>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
@@ -80,9 +89,9 @@ export class Bucket extends Component {
 
 function mapDispatchToProps(dispatch){
   return{
-    fetchBucketlists: () => dispatch(actions.fetchBucketlists),
-    updateBucketlist: bucketdata => dispatch(actions.updateBucketlist(bucketdata))
+    updateBucketlist: bucketdata => dispatch(actions.updateBucketlist(bucketdata)),
+    deleteBucketlist: bucketdata => dispatch(actions.deleteBucketlist(bucketdata))
   };
 };
 
-export default connect(mapDispatchToProps)(Bucket);
+export default connect(null, mapDispatchToProps)(Bucket);

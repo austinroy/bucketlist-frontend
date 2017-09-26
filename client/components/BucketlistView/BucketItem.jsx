@@ -115,4 +115,4 @@ function mapDispatchToProps(dispatch){
   };
 };
 
-export default connect(mapDispatchToProps)(BucketItem);
+export default connect(null,mapDispatchToProps)(BucketItem);

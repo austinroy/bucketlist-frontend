@@ -89,4 +89,4 @@ function mapDispatchToProps(dispatch){
   };
 };
 
-export default connect(mapDispatchToProps)(ItemsList);
+export default connect(null, mapDispatchToProps)(ItemsList);
