@@ -3,20 +3,21 @@ import axios from 'axios';
 const baseUrl = '127.0.0.1:5000';
 
 export const createBucketlistSuccess = () => ({
-  type: 'CREATE_BUCKETLIST_SUCCESS'
+  type: 'CREATE_BUCKETLIST_SUCCESS',
+  bucketlist
 });
 
-export const updateBucketlistSuccess = () => ({
+export const updateBucketlistSuccess = (bucketlist) => ({
   type: 'UPDATE_BUCKETLIST_SUCCESS',
   bucketlist
 });
 
 export const deleteBucketlistSuccess = () => ({
-  type: 'DELETE_BUCKETLIST_SUCESS'
+  type: 'DELETE_BUCKETLIST_SUCCESS'
 });
 
 export const createBucketlistItemSuccess = () => ({
-  type: 'CREATE_BUCKETLIST_ITEM_Success',
+  type: 'CREATE_BUCKETLIST_ITEM_SUCCESS',
   bucketlist_item
 });
 
@@ -45,7 +46,7 @@ export const updateBucketlist = (data) => {
   return () => {
     const url = 'http://localhost:5000/bucketlists/'+ data.id;
     axios.put(url,data).then(res =>
-    console.log(res.data));
+    console.log(res.data));  
   }
 };
 
