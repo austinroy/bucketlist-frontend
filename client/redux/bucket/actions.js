@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import fetch from 'isomorphic-fetch';
+
 const baseUrl = '127.0.0.1:5000';
 
 export const createBucketlistSuccess = () => ({
@@ -35,10 +37,25 @@ export const fetchBucketlistsSuccess = (bucketlists) => ({
   bucketlists
 });
 
-export const fetchBucketlists = (dispatch) => {
-  axios.get('http://localhost:5000/bucketlists/').then(res => {
-    const bucketlists = res.data.Bucketlist;
-    dispatch(fetchBucketlistsSuccess(bucketlists));
+export const fetchBucketlists = () => (dispatch) => {
+  console.log('Fetch bucketlists was called!');
+  return fetch('http://localhost:5000/bucketlists/',{
+    headers: {
+      'Content-Type': 'application/json'
+    },method: 'GET'
+  })
+  .then(res => {
+    if(!res.ok){
+      return res.json().then(Promise.reject.bind(Promise));
+    }
+    return res.json();
+  })
+  .then(json => {
+    const { bucketlists } = json;
+    return dispatch(fetchBucketlistsSuccess(bucketlists));
+  }) 
+  .catch(err => {
+    console.log('There was an error', err);
   })
 };
 
@@ -46,7 +63,7 @@ export const updateBucketlist = (data) => {
   return () => {
     const url = 'http://localhost:5000/bucketlists/'+ data.id;
     axios.put(url,data).then(res =>
-    console.log(res.data));  
+    console.log(res.data));ç  
   }
 };
 

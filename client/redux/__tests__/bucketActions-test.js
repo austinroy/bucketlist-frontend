@@ -1,9 +1,8 @@
 import * as actions from  '../bucket/actions'
 import expect from 'expect'
-import MockAdapter from 'axios-mock-adapter'
+import nock from 'nock'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
-import axios from 'axios'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -16,11 +15,10 @@ describe("Bucketlist actions tests", ()=>{
     })
 
     afterEach(() => {
+        nock.cleanAll()
     })
 
     it("Should create a FETCH_BUCKETLISTS_SUCCESS when bucketlists are fetched successfully", ()=>{
-        const mock = new MockAdapter(axios)
-
         const bucketlists = [
             {
                 id: 1,
@@ -67,18 +65,21 @@ describe("Bucketlist actions tests", ()=>{
         ]
 
         
-        mock.onGet('http://localhost:5000/bucketlists/').reply(200, {Bucketlist: bucketlists})
+        nock('http://localhost:5000')
+            .get('/bucketlists/')
+            .reply(200,{bucketlists})
 
-
-        const expectedAction = {
+        const expectedAction = [{
             type: 'FETCH_BUCKETLISTS_SUCCESS',
             bucketlists
-        }
-        console.log("this is store", store)
-        return store.dispatch(actions.fetchBucketlists()).then(()=> {
-                expect(store.getActions().toEqual(expectedAction))
+        }]
+        // const act = store.dispatch(actions.fetchBucketlists())
+        // console.log(act)
+
+        return store.dispatch(actions.fetchBucketlists())
+            .then(()=> {
+                expect(store.getActions()).toEqual(expectedAction)
             })
-        
 
     })
 })
