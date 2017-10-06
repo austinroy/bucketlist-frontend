@@ -73,8 +73,6 @@ describe("Bucketlist actions tests", ()=>{
             type: 'FETCH_BUCKETLISTS_SUCCESS',
             bucketlists
         }]
-        // const act = store.dispatch(actions.fetchBucketlists())
-        // console.log(act)
 
         return store.dispatch(actions.fetchBucketlists())
             .then(()=> {

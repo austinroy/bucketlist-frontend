@@ -47,11 +47,12 @@ export const fetchBucketlists = () => (dispatch) => {
   .then(res => {
     if(!res.ok){
       return res.json().then(Promise.reject.bind(Promise));
+      console.log("Unable to fetch")
     }
     return res.json();
   })
   .then(json => {
-    const { bucketlists } = json;
+    const {bucketlists} = json;
     return dispatch(fetchBucketlistsSuccess(bucketlists));
   }) 
   .catch(err => {
@@ -100,6 +101,7 @@ export const updateBucketlistItem = (data) => {
 };
 
 export const deleteBucketlistItem = (data) => {
+  console.log(data)
   const url = 'http://localhost:5000/bucketlists/'+ data.bucketlist_id + "/items/" + data.id;
   axios.delete(url).then(res =>
   console.log(res.data));

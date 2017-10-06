@@ -4,7 +4,7 @@ import BucketPanel from "./BucketPanel.jsx";
 import { connect } from 'react-redux';
 import * as actions from '../../redux/bucket/actions.js'
 
-class BucketlistsPage extends Component {
+export class BucketlistsPage extends Component {
   constructor(props){
     super(props);
     this.close = this.close.bind(this);
