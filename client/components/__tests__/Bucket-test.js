@@ -14,10 +14,6 @@ describe('Bucket', () =>{
     it('renders without breaking', () =>{
         const wrapper = shallow(<Bucket {...props}/>)
     })
-    it('renders Bucket component', ()=>{
-        const wrapper = shallow(<Bucket {...props}/>)
-        expect(wrapper.find('Panel')).toBeTruthy
-    })
     it('renders modal', ()=> {
         const wrapper = shallow(<Bucket {...props}/>);
         expect(wrapper.find('Modal').first()).toBeTruthy 
