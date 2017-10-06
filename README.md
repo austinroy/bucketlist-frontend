@@ -15,7 +15,7 @@ GET STARTED
 
 * Then run the following command to install node dependencies:
 
-  ```$ npm install```
+  ```$ yarn```
   
 * To start the server, run the command:
    ```$ yarn start ```
