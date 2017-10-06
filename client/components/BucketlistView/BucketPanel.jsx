@@ -5,7 +5,7 @@ import Bucket from './Bucket.jsx';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/bucket/actions'
 
-class BucketPanel extends React.Component {
+export class BucketPanel extends React.Component {
   constructor(props){
     super(props);
     this.state = {
