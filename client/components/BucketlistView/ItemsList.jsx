@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/bucket/actions.js'
 
 
-class ItemsList extends React.Component {
+export class ItemsList extends React.Component {
   constructor(props){
     super(props);
     this.closeNewModal = this.closeNewModal.bind(this);
