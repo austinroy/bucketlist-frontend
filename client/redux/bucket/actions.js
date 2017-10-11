@@ -4,7 +4,7 @@ import fetch from 'isomorphic-fetch';
 
 const baseUrl = '127.0.0.1:5000';
 
-export const createBucketlistSuccess = () => ({
+export const createBucketlistSuccess = (bucketlist) => ({
   type: 'CREATE_BUCKETLIST_SUCCESS',
   bucketlist
 });
@@ -19,17 +19,15 @@ export const deleteBucketlistSuccess = () => ({
 });
 
 export const createBucketlistItemSuccess = () => ({
-  type: 'CREATE_BUCKETLIST_ITEM_SUCCESS',
-  bucketlist_item
+  type: 'CREATE_BUCKETLIST_ITEM_SUCCESS'
 });
 
 export const updateBucketlistItemSuccess = () => ({
   type: 'UPDATE_BUCKETLIST_ITEM_SUCCESS',
-  bucketlist_item
 });
 
-export const deleteBucketlistItemSucess = () => ({
-  type: 'DELETE_BUCKETLIST_ITEM_SUCESS'
+export const deleteBucketlistItemSuccess = () => ({
+  type: 'DELETE_BUCKETLIST_ITEM_SUCCESS'
 });
 
 export const fetchBucketlistsSuccess = (bucketlists) => ({
@@ -80,12 +78,6 @@ export const deleteBucketlist = (data) => {
     axios.delete(url).then(res =>
     console.log(res.data));
   }
-};
-
-export const searchBucketlist = (dispatch, credentials, bucket_name) => {
-  const url = 'http://localhost:5000/bucketlists/q='+ bucket_id;
-  axios.get(url, credentials).then(res =>
-  console.log(res.data));
 };
 
 export const newBucketlistItem = (data) => {
