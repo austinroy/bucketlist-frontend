@@ -1,4 +1,5 @@
-# bucketlist-frontend
+# bucketlist-frontend 
+[![Build Status](https://travis-ci.org/austinroy/bucketlist-frontend.svg?branch=develop)](https://travis-ci.org/austinroy/bucketlist-frontend)
 React JS front end for bucketlist web application
 
 GET STARTED
